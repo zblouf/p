@@ -1,5 +1,4 @@
-.. P documentation master file, created by
-   sphinx-quickstart on Tue Mar 31 22:26:36 2015.
+.. P documentation master file
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
@@ -14,10 +13,10 @@ Contents:
 Documentation technique
 -----------------------
 
-Cette partie décrit d'un point de vue technique et informatique l'organisation 
-du code de Générisque. Elle s'adresse **en interne** aux développeurs.
+Cette partie décrit d'un point de vue technique et informatique l'organisation
+du code de __________. Elle s'adresse **en interne** aux développeurs.
 
-Pour des raisons pratiques, et afin de maintenir une cohérence avec le code, 
+Pour des raisons pratiques, et afin de maintenir une cohérence avec le code,
 elle est rédigée en anglais.
 
 * :doc:`Quick overview <tech/quick_overview>` for new developpers
@@ -36,4 +35,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-
