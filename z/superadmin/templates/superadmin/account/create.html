@@ -1,0 +1,28 @@
+{% extends "superadmin/base_superadmin.html" %}
+{% load bootstrap3 %}
+
+{% block "contents" %}
+<div class="page-header"><h3>Création de compte</h3></div>
+
+<form class="form-horizontal" method="POST" action="">
+    {% csrf_token %}
+    <legend>Informations générales</legend>
+    {% bootstrap_field form.account_name layout="horizontal" %}
+    {% bootstrap_field form.account_slug layout="horizontal" %}
+    <legend>Informations commerciales</legend>
+    {% bootstrap_field form.account_type layout="horizontal" %}
+    {% bootstrap_field form.account_vendor layout="horizontal" %}
+    <legend>Administrateur</legend>
+    {% bootstrap_field form.admin_login layout="horizontal" %}
+    {% bootstrap_field form.admin_email layout="horizontal" %}
+    {% bootstrap_field form.admin_pass layout="horizontal" %}
+    {% bootstrap_field form.admin_pass_confirm layout="horizontal" %}
+
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Créer</button>
+    </div>
+</form>
+
+
+{% endblock %}

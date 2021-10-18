@@ -1,0 +1,86 @@
+{% extends "superadmin/base_superadmin.html" %}
+{% load bootstrap3 %}
+{% block "contents" %}
+
+<div class="page-header">
+	<h3><a href=""><span class="glyphicon glyphicon-backward"></span></a>Détail du compte {{ account.name }}</h3>
+</div>
+
+
+<div class="col-xs-2">
+  <ul class="nav nav-pills tabs-left _vertical-text" role="tablist" id="account_menu_tab">
+    <li class="active"><a href="#home" role="tab" data-toggle="tab">{% bootstrap_icon "home" %}</a></li>
+    <li><a href="#options" role="tab" data-toggle="tab">Options</a></li>
+    <li><a href="#apps" role="tab" data-toggle="tab">Apps</a></li>
+    <li><a href="#entities" role="tab" data-toggle="tab">Entités</a></li>
+    <li><a href="#sites" role="tab" data-toggle="tab">Sites</a></li>
+    <li><a href="#users" role="tab" data-toggle="tab">Utilisateurs</a></li>
+  </ul>
+</div>
+
+<div class="col-xs-10">
+  <div class="tab-content">
+    <div class="tab-pane active" id="home">home sweet home</div>
+    <div class="tab-pane" id="options">options</div>
+    <div class="tab-pane" id="apps">
+      <form>
+        <legend>Applications / modules pour le compte "{{ account.name }}"</legend>
+        {% for app in apps %}
+        <div>
+          <input type="checkbox"> {{ app.name }}
+          <br>
+          <span class="text-info">{{ app.description }}</span>
+        </div>
+        {% endfor %}
+      </form>
+
+    </div>
+    <div class="tab-pane" id="entities">
+
+  <ul class="nav nav-tabs" role="tablist" id="account_menu_tab">
+    <li class="active"><a href="#entity_list" role="tab" data-toggle="tab">Liste des entités</a></li>
+    <li><a href="#entity_groups" role="tab" data-toggle="tab">Groupes</a></li>
+    <li><a href="#entity_options" role="tab" data-toggle="tab">Options</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="entity_list">liste</div>
+    <div class="tab-pane" id="entity_groups">groupes</div>
+    <div class="tab-pane" id="entity_options">options</div>
+  </div>
+
+    </div>
+    <div class="tab-pane" id="sites">
+
+  <a href="create" class="btn btn-primary pull-right" role="button">{% bootstrap_icon "plus" %} créer un site</a>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <td>#</td>
+      <td>Nom</td>
+    </tr>
+  </thead>
+  <tbody>
+    {% for a in accounts %}
+    <tr>
+      <td>{{ a.id }}</td>
+      <td><a href="detail/{{ a.id }}">{{ a.name }}</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+
+    </div>
+    <div class="tab-pane" id="users">utilisateurs
+      <ul>
+      {% for zu in account.zuser_set.all %}
+        <li>{{ zu }}</li>
+      {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

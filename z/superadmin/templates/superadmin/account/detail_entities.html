@@ -1,0 +1,17 @@
+{% extends "superadmin/account/base_detail.html" %}
+{% load bootstrap3 %}
+{% block "final_contents" %}
+  <script>jQuery("#account_detail_tab_entities").addClass("active")</script>
+
+  <ul class="nav nav-tabs" role="tablist" id="account_menu_tab">
+    <li class="active"><a href="#entity_list" role="tab" data-toggle="tab">Liste des entités</a></li>
+    <li><a href="#entity_groups" role="tab" data-toggle="tab">Groupes</a></li>
+    <li><a href="#entity_options" role="tab" data-toggle="tab">Options</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="entity_list">liste</div>
+    <div class="tab-pane" id="entity_groups">groupes</div>
+    <div class="tab-pane" id="entity_options">options</div>
+  </div>
+
+{% endblock %}

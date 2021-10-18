@@ -1,0 +1,23 @@
+{% extends "superadmin/base_superadmin.html" %}
+{% load bootstrap3 %}
+
+{% block "contents" %}
+<div class="page-header"><h3>Création de distributeur</h3></div>
+
+<form class="form-horizontal" method="POST" action="">
+    <legend>Généralités</legend>
+    {% csrf_token %}
+    {% bootstrap_form form layout='horizontal' %}
+
+    <legend>Contact</legend>
+
+
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">Créer</button>
+    </div>
+
+
+</form>
+
+
+{% endblock %}

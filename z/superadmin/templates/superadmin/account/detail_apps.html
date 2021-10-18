@@ -1,0 +1,17 @@
+{% extends "superadmin/account/base_detail.html" %}
+{% load bootstrap3 %}
+{% block "final_contents" %}
+  <script>jQuery("#account_detail_tab_apps").addClass("active")</script>
+
+      <form>
+        <legend>Applications / modules pour le compte "{{ account.name }}"</legend>
+        {% for app in apps %}
+        <div>
+          <input type="checkbox"> {{ app.name }}
+          <br>
+          <span class="text-info">{{ app.description }}</span>
+        </div>
+        {% endfor %}
+      </form>
+
+{% endblock %}

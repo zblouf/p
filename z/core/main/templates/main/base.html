@@ -1,0 +1,210 @@
+{% load bootstrap3 %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">	
+	<link href="/static/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<script src="/static/js/jquery-2.1.4.min.js"></script>
+    <script src="/static/bootstrap/js/bootstrap.min.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/static/css/bootstrap.vertical-tabs.css">
+
+    <style>
+body {
+  font-family: 'Titillium Web', sans-serif;
+  min-height: 2000px;
+  padding-top: 101px;
+}
+    </style>
+
+    </head>
+    <body>
+
+  <script language="javascript">
+  z_active_app = '';
+  Z_REFRESH_ON_ENTITY_CHANGE = 1;
+  Z_REFRESH_ON_ACTIVITY_CHANGE = false;
+  {% block "js_constants" %}
+  {% endblock %}
+
+  {% block "js_first" %}
+  {% endblock %}
+  jQuery().ready(function(){
+    jQuery("#znavbar-"+z_active_app).addClass("active");
+    {% block "jquery_ready_first" %}
+    {% endblock %}
+    {% block "jquery_ready_last" %}
+    {% endblock %}
+
+  });
+
+  function OnEntityChange(eid){
+    alert("about to change entity "+Z_REFRESH_ON_ENTITY_CHANGE);
+    if (Z_REFRESH_ON_ENTITY_CHANGE==1){
+      alert("changing entity to #"+eid);
+    }
+  };
+
+
+  {% block "js_last" %}
+  {% endblock %}
+
+  </script>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">{{ settings.PLATEFORM_NAME }}</a>
+          <a class="navbar-brand" href="#">| {{ account }}  </a>
+        </div>
+
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">[R&D] Rennes<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li class="dropdown-submenu">
+                  <a href="#">{% bootstrap_icon "cog" %} options</a>
+                  <ul class="dropdown-menu">
+                    <li><a><input type="checkbox"> afficher les inactifs</a></li>
+                  </ul>
+                </li>
+                <li class="divider"></li>
+                <li class="dropdown-header" onClick="javascript:OnEntityChange(1)">R&D</li>
+                <li><a href="#">Paris</a></li>
+                <li><a href="#">Rennes</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header" onClick="javascript:OnEntityChange(1)">Exploitation</li>
+                <li><a href="#">Paris</a></li>
+                <li><a href="#">Brest</a></li>
+              </ul>
+            </li>
+            </ul>
+          <ul class="nav navbar-nav pull-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+{% bootstrap_icon "user" %} {{ zuser.user.get_full_name }}
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="/user/settings">{% bootstrap_icon "cog" %} Mes paramètres</a></li>
+                <li class="divider"></li>
+                <li><a href="/auth/logout">{% bootstrap_icon "log-out" %} Déconnexion</a></li>
+              </ul>
+            </li>
+          </ul>
+
+
+        </div>
+
+
+        <div class="navbar-collapse collapse">
+
+          <ul class="nav navbar-nav nav-pills navbar-right">
+            <li class="" id="znavbar-home"><a href="/home">{% bootstrap_icon "home" %}</a></li>
+            <li class="" id="znavbar-dashboard"><a href="/dashboard">{% bootstrap_icon "dashboard" %}</a></li>
+            <li class="" id="znavbar-springboard"><a href="/springboard">{% bootstrap_icon "th" %}</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Organisation<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li class="dropdown-header">Entités</li>
+                <li><a href="#">Liste</a></li>
+                <li><a href="#">Créer</a></li>
+                <li><a href="#"></a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Sites</li>
+                <li><a href="#">Liste</a></li>
+                <li><a href="#">Créer Site / Zone</a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Personnel</li>
+                <li><a href="#">Liste</a></li>
+                <li><a href="#">...</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">EvRP<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li class="dropdown-header"></li>
+                <li><a href="#">Risques</a></li>
+                <li><a href="#">Actions</a></li>
+                <li><a href="#"></a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Editions</li>
+                <li><a href="#">DUER</a></li>
+                <li><a href="#">Synthèse</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Inspections sécurité<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li class="dropdown-header"></li>
+                <li><a href="/checktour/manage">Gestion</a></li>
+                <li><a href="/checktour/list">Liste</a></li>
+            </ul></li>
+            <li><a>|</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Documents<span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li class="dropdown-header">Fichiers</li>
+                <li><a href="#">Liste</a></li>
+                <li><a href="#">Créer</a></li>
+                <li><a href="#"></a></li>
+                <li class="divider"></li>
+                <li class="dropdown-header">Liens</li>
+                <li><a href="#">Liste</a></li>
+                <li><a href="#">Créer</a></li>
+              </ul>
+            </li>
+            <li class=""><a href="#">{% bootstrap_icon "cog" %}</a></li>
+            <li class=""><a href="#">{% bootstrap_icon "wrench" %}</a></li>
+            <li class="" data-toggle="collapse" data-parent="#accordion_help" href="#collapsemenu"><a href="#"><big>{% bootstrap_icon "question-sign" %}</big></a></li>
+
+    
+          </ul>
+
+        </div><!--/.nav-collapse -->
+
+       
+
+      </div>
+    </div>
+
+<div class="main_contents">
+
+<div id="help_box" class="help-box text-center">
+   <div class="accordion" id="accordion_help">
+      <div class="accordion-group">
+         <div id="collapsemenu" class="accordion-body collapse">
+            <div class="accordion-inner">
+            <div class="row inner_box">
+            <div class="col-md-12">
+                <h2>[ aide en ligne intégrée ]</h2>
+            </div>
+            </div>
+        </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+    <div class="container">
+  
+
+
+{% block "contents" %}
+     
+{% endblock %}
+
+    </div> <!-- /container -->
+
+</div>
+
+    </body>
+</html>

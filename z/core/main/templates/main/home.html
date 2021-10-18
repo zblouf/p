@@ -1,0 +1,72 @@
+{% extends BASE_TEMPLATE %}
+{% load bootstrap3 %}
+{% load staticfiles %}
+{% block "contents" %}
+<script src="{% static "js/Chart.js" %}"></script>
+<div class="page-header">
+	Bonjour <i>{{ zuser.user.get_full_name }}</i>
+	<span class="text-muted pull-right"><small>dernière connexion : {{ zuser.user.last_login }}</small></span>
+</div>
+
+
+<div class="col-xs-2"> <!-- required for floating -->
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs tabs-left _vertical-text">
+      <li class="active"><a href="#home" data-toggle="tab">{% bootstrap_icon "home" %} Home</a></li>
+      <li><a href="#profile" data-toggle="tab">{% bootstrap_icon "bell" %} Alertes <span class="badge">4</span></a></li>
+      <li><a href="#messages" data-toggle="tab">{% bootstrap_icon "comment" %} Messages</a></li>
+      <li><a href="#settings" data-toggle="tab">{% bootstrap_icon "wrench" %} Settings</a></li>
+    </ul>
+</div>
+
+<div class="col-xs-10">
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane active" id="home">Home Tab.
+
+<div>
+      <canvas id="canvas" height="300" width="300"></canvas>
+</div>
+
+
+  <script>
+  var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
+
+  var barChartData = {
+    labels : ["January","February","March","April","May","June","July"],
+    datasets : [
+      {
+        fillColor : "rgba(220,220,220,0.5)",
+        strokeColor : "rgba(220,220,220,0.8)",
+        highlightFill: "rgba(220,220,220,0.75)",
+        highlightStroke: "rgba(220,220,220,1)",
+        data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+      },
+      {
+        fillColor : "rgba(151,187,205,0.5)",
+        strokeColor : "rgba(151,187,205,0.8)",
+        highlightFill : "rgba(151,187,205,0.75)",
+        highlightStroke : "rgba(151,187,205,1)",
+        data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+      }
+    ]
+
+  }
+  window.onload = function(){
+    var ctx = document.getElementById("canvas").getContext("2d");
+    window.myBar = new Chart(ctx).Bar(barChartData, {
+      responsive : false
+    });
+  }
+
+  </script>
+
+
+      </div>
+      <div class="tab-pane" id="profile">Profile Tab.</div>
+      <div class="tab-pane" id="messages">Messages Tab.</div>
+      <div class="tab-pane" id="settings">Settings Tab.</div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "superadmin/base_superadmin.html" %}
+{% load bootstrap3 %}
+{% block "contents" %}
+
+<div class="page-header">
+	<h3><a href="../list"><span class="glyphicon glyphicon-backward"></span></a> Détail du compte "<b>{{ account.name }}</b>"</h3>
+</div>
+
+
+<div class="col-xs-2">
+  <ul class="nav nav-pills tabs-left _vertical-text" role="tablist" id="account_menu_tab">
+    <li id="account_detail_tab_home"><a href="home" role="tab">{% bootstrap_icon "home" %}</a></li>
+    <li id="account_detail_tab_options"><a href="options" role="tab">Options</a></li>
+    <li id="account_detail_tab_apps"><a href="apps" role="tab">Apps</a></li>
+    <li id="account_detail_tab_entities"><a href="entities" role="tab">Entités</a></li>
+    <li id="account_detail_tab_sites"><a href="sites" role="tab">Sites</a></li>
+    <li id="account_detail_tab_users"><a href="users" role="tab">Utilisateurs</a></li>
+  </ul>
+</div>
+
+<div class="col-xs-10">
+
+{% block "final_contents" %}
+{% endblock %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+
+P - Technical documentation
+===========================
+
+* :doc:`Quick overview for new developpers <quick_overview>`
+
+* :doc:`Code layout <code_layout>`
+
+* :doc:`CSS / Styling workflow <style_workflow>`
+
+* :doc:`Entity/Activity context <ea_context>`
+
+
+* :doc:`Migrations <v1migration>`
+
+
+Indices and tables
+------------------
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
+

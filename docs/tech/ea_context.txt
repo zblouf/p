@@ -1,0 +1,37 @@
+=======================
+Entity/Activity context
+=======================
+
+Initial values
+--------------
+
+When a valid user logs in, the initial Entity and Activity are sets according 
+to the following rules:
+
+Entity
+^^^^^^
+
+#. If there's no authorized entity, sets ``eid`` and ``entity`` to ``None``.
+
+#. If user has a ``DEFAULT_ENTITY_ID`` option, loads the matching Entity if it 
+   is in the authorized entities.
+
+#. Picks the first (alphabetical ``name`` order) entity in authorized entities
+
+Activity
+^^^^^^^^
+
+#. Picks the first (alphabetical ``name`` order) activity for the current 
+   entity
+
+On Context Change
+-----------------
+
+On Entity Change
+^^^^^^^^^^^^^^^^
+
+#. Select an activity matching the previously selected if one can be found : 
+
+On Activity Change
+^^^^^^^^^^^^^^^^^^
+

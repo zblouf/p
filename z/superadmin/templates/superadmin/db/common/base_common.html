@@ -1,0 +1,23 @@
+{% extends "superadmin/db/base_db.html" %}
+{% load bootstrap3 %}
+{% block "final_contents" %}
+
+  <script>jQuery("#db_tab_common").addClass("active")</script>
+
+
+  <ul class="nav nav-tabs" role="tablist" id="db_common_menu_tab">
+    <li class="active"><a href="#home" role="tab" data-toggle="tab">{% bootstrap_icon "home" %}</a></li>
+    <li><a href="#pictos" role="tab" data-toggle="tab">Pictogrammes</a></li>
+    <li><a href="#actiontypes" role="tab" data-toggle="tab">Types d'actions</a></li>
+  </ul>
+  <div class="tab-content">
+    <div class="tab-pane active" id="home"></div>
+    <div class="tab-pane" id="pictos"></div>
+    <div class="tab-pane" id="actiontypes"></div>
+  </div>
+
+{% block "db_common_contents" %}
+
+{% endblock %}
+
+{% endblock %}

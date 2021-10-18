@@ -1,0 +1,14 @@
+{% extends "superadmin/db/base_db.html" %}
+{% load bootstrap3 %}
+{% load staticfiles %}
+{% block "final_contents" %}
+  <script>jQuery("#db_tab_home").addClass("active")</script>
+
+{% for menu in DB_MENU %}
+<p>
+	<h3>{{ menu.label }}</h3>
+{{ menu.description }}
+</p>
+{% endfor %}
+
+{% endblock %}

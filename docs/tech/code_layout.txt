@@ -1,0 +1,13 @@
+Code Layout
+===========
+
+Here's the layout of 'P' source code, detailing up to django apps.
+
+All apps should be in the "z" namespace.
+
+z.saas
+------
+ * models : 
+    * Account
+
+

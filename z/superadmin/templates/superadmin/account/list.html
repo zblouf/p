@@ -1,0 +1,37 @@
+{% extends "superadmin/base_superadmin.html" %}
+{% load bootstrap3 %}
+{% block "contents" %}
+<div class="page-header">
+	<h3>Liste des comptes
+
+	<a href="create" class="btn btn-primary pull-right" role="button">{% bootstrap_icon "plus" %} créer un compte</a>
+
+	</h3>
+
+</div>
+
+
+<table class="table">
+	<thead>
+		<tr>
+			<td>#</td>
+			<td>Nom</td>
+			<td>Login</td>
+			<td>Distributeur</td>
+			<td>nb. Sites</td>
+		</tr>
+	</thead>
+	<tbody>
+		{% for a in accounts %}
+		<tr>
+			<td>{{ a.id }}</td>
+			<td><a href="{{ a.id }}/home">{{ a.name }}</a></td>
+			<td>{{ a.login }}</td>
+			<td></td>
+			<td></td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
+
+{% endblock %}

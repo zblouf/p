@@ -1,0 +1,29 @@
+{% extends "superadmin/base_superadmin.html" %}
+{% load bootstrap3 %}
+{% block "contents" %}
+
+<div class="page-header">
+	<h3>Base de données - gestion des <i>invariants</i></h3>
+</div>
+
+
+<div class="col-xs-2">
+  <ul class="nav nav-pills tabs-left _vertical-text" role="tablist" id="db_menu_tab">
+    <li id="db_tab_home"><a href="home" role="tab">{% bootstrap_icon "home" %}</a></li>
+{% for menu in DB_MENU %}
+	<li id="db_tab_{{ menu.id }}"><a href="{{ settings.SUPERADMIN_BASE_URL }}db/{{ menu.id }}">{{ menu.label }}</a></li>
+{% endfor %}
+
+    <li id="db_tab_events"><a href="events" role="tab">Evenements</a></li>
+    <li id="db_tab_"><a href="" role="tab">...</a></li>
+  </ul>
+</div>
+
+<div class="col-xs-10">
+
+{% block "final_contents" %}
+{% endblock %}
+
+</div>
+
+{% endblock %}
