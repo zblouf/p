@@ -22,7 +22,7 @@ RETAILER_BASE_URL = '/_retail/'
 # See https://docs.djangoproject.com/en/dev/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '#tt3z5=6+&won8+^hxp2p%$v63q8u(6!-5r*2smdct-c2tvn&2'
+SECRET_KEY = '[secret key removed]'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
